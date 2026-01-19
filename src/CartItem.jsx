@@ -7,14 +7,14 @@ const CartItem = ({ onContinueShopping }) => {
   const cart = useSelector(state => state.cart.items);
   const dispatch = useDispatch();
 
-  // ✅ Calculate total amount for all products in cart
+  // ✅ Calculate total cart amount
   const calculateTotalAmount = () => {
     return cart.reduce((total, item) => {
       return total + item.cost * item.quantity;
     }, 0);
   };
 
-  // ✅ Continue shopping handler
+  // ✅ Continue shopping
   const handleContinueShopping = (e) => {
     e.preventDefault();
     onContinueShopping(e);
@@ -42,12 +42,12 @@ const CartItem = ({ onContinueShopping }) => {
     }
   };
 
-  // ✅ Remove item from cart
+  // ✅ Remove item
   const handleRemove = (item) => {
     dispatch(removeItem(item.name));
   };
 
-  // ✅ Calculate total cost per item
+  // ✅ Total cost per item
   const calculateTotalCost = (item) => {
     return item.cost * item.quantity;
   };
@@ -114,7 +114,12 @@ const CartItem = ({ onContinueShopping }) => {
           Continue Shopping
         </button>
         <br />
-        <button className="get-started-button1">Checkout</button>
+        <button
+          className="get-started-button1"
+          onClick={() => alert("Checkout functionality coming soon!")}
+        >
+          Checkout
+        </button>
       </div>
     </div>
   );
